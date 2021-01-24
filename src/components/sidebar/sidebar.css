@@ -1,0 +1,12 @@
+nav {
+    position: fixed;
+    top: 11.2vw;
+    left: 0;
+    height: 85vh;
+    padding: 2rem 1rem 0.6rem;
+    background: #fff;
+    overflow-y: auto;
+    width: 15%;
+    box-shadow: 3px 1px 3px 0px #00000026;
+    border-radius: 15px;
+}
