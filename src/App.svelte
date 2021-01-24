@@ -1,6 +1,7 @@
 <script>
 import { Col, Container, Row, Button, Modal, ModalBody, ModalHeader, ModalFooter, Form, FormGroup, Input } from 'sveltestrap';
 import SidebarSG from './components/sidebar/sidebarComp.svelte';
+import PrincipalSG from './components/principal/principalComp.svelte';
 import HeaderSG from './components/header/headerComp.svelte';
 	const {remote} = require('electron');
 	const app = remote.require("./app");
@@ -16,9 +17,9 @@ import HeaderSG from './components/header/headerComp.svelte';
 	const borrarpass = ()=> {passtxt="";document.getElementById("wpass").focus();};
 </script>
 
-<div>
 	<SidebarSG/>
 	<HeaderSG/>
+	<PrincipalSG/>
 	<Button color="danger" on:click={toggle}>Open Modal</Button>
 	<Modal isOpen={open || isLocked} data-backdrop="static" class="modal-dialog-centered">
 	  <ModalHeader {toggle}>Introduzca la Contraseña</ModalHeader>
@@ -62,7 +63,6 @@ import HeaderSG from './components/header/headerComp.svelte';
 		<Button color="primary" on:click={toggle}>Aceptar</Button>
 	  </ModalFooter>
 	</Modal>
-</div>
 
 <style>
 	.wrapper-teclas{
