@@ -7,7 +7,7 @@
 </script>
 
 <Modal isOpen={open} data-backdrop="static" class="modal-dialog-centered">
-    <ModalHeader>Seleccione el Cliente</ModalHeader>
+    <ModalHeader {toggle}>Seleccione el Cliente</ModalHeader>
     <ModalBody>
         <p>Clientes</p>
     </ModalBody>

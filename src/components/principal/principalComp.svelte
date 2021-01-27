@@ -14,7 +14,6 @@
         {:else}
             <OrdersSG/>
         {/if}
-        
     {:else}
         <p>Principal {$menu}</p>
     {/if}

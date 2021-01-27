@@ -10,9 +10,8 @@
     }
 </script>
 
-<nav>
-    
-    <Button block color="primary" on:click={()=>{handleMenu(1)}}><Icon icon={faFileInvoice}></Icon>  Pedidos</Button>
-    <Button block color="secondary" on:click={()=>{handleMenu(2)}}><Icon icon={faChair}></Icon>  Mesas</Button>
-    <Button block color="danger" on:click={()=>{handleMenu(3)}}><Icon icon={faShoppingBag}></Icon>  Delivery</Button>
+<nav class="sidebar-sg p-2">
+    <Button block color="primary" class="btn-sg btn-lateral" on:click={()=>{handleMenu(1)}}><Icon icon={faFileInvoice}></Icon>  Pedidos</Button>
+    <Button block color="secondary" class="btn-sg btn-lateral" on:click={()=>{handleMenu(2)}}><Icon icon={faChair}></Icon>  Mesas</Button>
+    <Button block color="danger" class="btn-sg btn-lateral" on:click={()=>{handleMenu(3)}}><Icon icon={faShoppingBag}></Icon>  Delivery</Button>
 </nav>

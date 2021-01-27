@@ -1,11 +1,21 @@
 <script>
 import { Col, Container, Row, Button, Modal, ModalBody, ModalHeader, ModalFooter, Form, FormGroup, Input } from 'sveltestrap';
+import './app.css';
 import SidebarSG from './components/sidebar/sidebarComp.svelte';
 import PrincipalSG from './components/principal/principalComp.svelte';
 import HeaderSG from './components/header/headerComp.svelte';
+import {categoria} from './stores/stores';
+
 	const {remote} = require('electron');
 	const app = remote.require("./app");
-	app.getUsers();
+	app.getUsers().then(cats=>{
+		cats.map(cate=>{
+			console.log(cate);
+			$categoria = [...$categoria, cate]
+		})
+	}).catch(err=>{
+		console.error(err);
+	});
 	let open = false;
 	let isLocked = false;
 	let passtxt = "";
@@ -16,11 +26,10 @@ import HeaderSG from './components/header/headerComp.svelte';
 	};
 	const borrarpass = ()=> {passtxt="";document.getElementById("wpass").focus();};
 </script>
-
-	<SidebarSG/>
+<div class="app-main">
 	<HeaderSG/>
+	<SidebarSG/>
 	<PrincipalSG/>
-	<Button color="danger" on:click={toggle}>Open Modal</Button>
 	<Modal isOpen={open || isLocked} data-backdrop="static" class="modal-dialog-centered">
 	  <ModalHeader {toggle}>Introduzca la Contraseña</ModalHeader>
 	  <ModalBody>
@@ -63,6 +72,9 @@ import HeaderSG from './components/header/headerComp.svelte';
 		<Button color="primary" on:click={toggle}>Aceptar</Button>
 	  </ModalFooter>
 	</Modal>
+</div>
+
+	
 
 <style>
 	.wrapper-teclas{

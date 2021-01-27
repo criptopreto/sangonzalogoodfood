@@ -1,3 +1,45 @@
 .bd-blue{
     border: 1px solid blue;
 }
+
+.orders-header{
+    height: 100px;
+    background: rgb(98,92,85);
+    background: linear-gradient(90deg, rgba(98,92,85,1) 0%, rgba(184,167,158,1) 50%, rgba(120,101,91,1) 100%);
+}
+
+.orders-pedidos{
+    height: 100%;
+}
+
+.orders-items {
+    height: 100%;
+}
+
+fieldset {
+    min-width: 0;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #3e000061;
+    box-shadow: 1px 1px 3px 0px #2900003b;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+
+legend {
+    display: block;
+    width: fit-content;
+    padding: 0;
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
+    line-height: inherit;
+    color: inherit;
+    white-space: normal;
+    padding-left: 10px;
+}
+
+.active {
+    color: #f7E7E7 !important;
+    background-color: #880f1b !important;
+    border-color: #000000 !important;
+}

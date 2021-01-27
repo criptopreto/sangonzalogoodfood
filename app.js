@@ -6,12 +6,25 @@ const {getConnection} = require('./database');
 
 let window
 
-async function getUsers() {
+function getUsers() {
     const conn = getConnection();
-    const usuarios = await conn.query("SELECT * FROM public.auth_user");
-    usuarios.map(usuario=>{
-        console.log(usuario.username);
-    })
+    return new Promise((res, rej)=>{
+        res(conn.task(async t=>{
+            let respuesta = [];
+            let cat = {};
+            const categorias = await t.any("SELECT * FROM public.categoria");
+            categorias.map(async categoria=>{
+                console.log(categoria);
+                const grupo = await t.any("SELECT * FROM public.grupo WHERE id_categoria = $1", categoria.id);
+                cat = categoria;
+                cat.grupos = grupo;
+                respuesta.push(categoria);
+            });
+
+            return respuesta
+        }));
+        rej("Error")
+    });
 }
 
 function createWindow() {
