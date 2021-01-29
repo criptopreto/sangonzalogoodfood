@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+import copy from 'rollup-plugin-copy';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -31,12 +32,19 @@ function serve() {
 export default {
 	input: 'src/main.js',
 	output: {
-		sourcemap: true,
+		sourcemap: !production,
 		format: 'iife',
 		name: 'app',
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		copy({
+			targets: [
+				{src: 'src/index.html', dest: 'public'},
+				{src: 'src/global.css', dest: 'public'},
+				{src: 'src/assets/images/**/*', dest: 'public/assets/images'},
+			]
+		}),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
