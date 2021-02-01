@@ -4,6 +4,7 @@ const path = require('path')
 const isDev = require('electron-is-dev');
 const ctrlDB = require('./controllers/db.controller');
 const router = require('navaid');
+const {readConfig} = require('./controllers/config.controller');
 
 let window
 /*async function getUsers() {
@@ -37,6 +38,7 @@ function createCategoria(catData) {
 }
 
 function createGrupo(grpData){
+    readConfig();
     return new Promise((res, rej)=>{
         ctrlDB.createGrupo(grpData).then(data=>{
             res(data);
@@ -91,10 +93,11 @@ function createWindow() {
             nodeIntegration: true,
             enableRemoteModule: true
         },
-        resizable: false
+        resizable: false,
+        frame: false
     });
 
-    window.set
+    window.menuBarVisible = false;
 
     //splash.loadURL(`file://${__dirname}/public/splash.html`);
     window.loadFile('public/index.html');
@@ -102,8 +105,6 @@ function createWindow() {
     window.on('closed', function(){
         window = null;
     });
-
-    if (isDev) window.webContents.openDevTools();
 }
 
 window = null;

@@ -1,7 +1,5 @@
 <script>
-
+    let src = 'assets/images/loader.gif'
 </script>
 
-<div>
-    <img src="./assets/images/sgheader.svg" alt="San Gonzalo">
-</div>
+<img {src} alt="San Gonzalo" width="800px">

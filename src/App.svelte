@@ -102,9 +102,6 @@
 	};
 	const borrarpass = ()=> {passtxt="";document.getElementById("wpass").focus();};
 </script>
-
-{splash}
-
 {#if splash}
 	<Splash/>
 {:else}
