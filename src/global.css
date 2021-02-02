@@ -7,7 +7,9 @@ html, body {
 }
 
 body {
-	background-color: #F7F3E3 !important;
+	background-image:  url('data:image/svg+xml;utf8,<svg viewBox="0 0 2560 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(247, 243, 227, 1)" d="M 0 335 C 670 335 670 473 1340 473 L 1340 473 L 1340 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(247, 243, 227, 1)" d="M 1339 473 C 1949.5 473 1949.5 381 2560 381 L 2560 381 L 2560 0 L 1339 0 Z" stroke-width="0"></path> </svg>');
+	background-size: cover;
+	background-repeat: no-repeat;
 	color: #333;
 	margin: 0;
 	padding: 8px;

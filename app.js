@@ -4,7 +4,7 @@ const path = require('path')
 const isDev = require('electron-is-dev');
 const ctrlDB = require('./controllers/db.controller');
 const router = require('navaid');
-const {readConfig} = require('./controllers/config.controller');
+const {readConfig, isConfig} = require('./controllers/config.controller');
 
 let window
 /*async function getUsers() {
@@ -85,6 +85,13 @@ function setFullScreen(){
     
 }
 
+const configuration = ()=>{
+    return new Promise(async (res, rej)=>{
+        const cfg = await readConfig();
+        res(cfg)
+    });
+};
+
 function createWindow() {
     window = new BrowserWindow({
         width: 800,
@@ -109,4 +116,4 @@ function createWindow() {
 
 window = null;
 
-module.exports = {createWindow, createCategoria, getCategorias, getCategoriasAndGrupos, createGrupo, setFullScreen}
+module.exports = {createWindow, createCategoria, getCategorias, getCategoriasAndGrupos, createGrupo, setFullScreen, isConfig, configuration}

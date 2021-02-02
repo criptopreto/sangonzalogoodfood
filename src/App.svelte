@@ -5,7 +5,7 @@
 	import SidebarSG from './components/sidebar/sidebarComp.svelte';
 	import PrincipalSG from './components/principal/principalComp.svelte';
 	import HeaderSG from './components/header/headerComp.svelte';
-	import {categoria} from './stores/stores';
+	import {categoria, readConfig, isConfig, configuration} from './stores/stores';
 	import Splash from './components/splash/splashComp.svelte';
 
 	const {remote} = require('electron');
@@ -38,6 +38,26 @@
 		}
 		return tam;
 	}
+
+	onMount(()=>{
+		app.isConfig().then(isCgf=>{
+			isConfig.set(true);
+			readConfig.set(true);
+			app.configuration().then(cfg=>{
+				configuration.set(cfg)
+				setTimeout(()=>{
+					app.setFullScreen();
+				}, 5000);
+			})
+		}).catch(err=>{
+			console.log(err)
+			setTimeout(()=>{
+				app.setFullScreen();
+			}, 5000);
+		});
+	});
+
+
 
 	setTimeout(()=>{
 		app.setFullScreen();

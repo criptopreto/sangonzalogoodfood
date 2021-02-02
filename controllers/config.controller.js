@@ -1,8 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const config = {
-    database = {
+const pathConfig = path.join(__dirname, "..", "sg-config.json");
+
+var config = {
+    database: {
         HOST: '10.51.2.92',
         USER: 'sp3consulta',
         PASSWORD: 'SP32020..',
@@ -17,13 +19,25 @@ const config = {
     }
 }
 
-exports.readConfig = ()=>{
-    //comprobar existencia de archivo de configuración
-    fs.stat(path.join(__dirname, "..", "sg-config.json"), (err, stat)=>{
-        if (err){ //El archivo de configuración no está creado
-            
-        }else{ //El archivo de configuración ya existe
+exports.isConfig = ()=>{
+    return new Promise(async (res,rej)=>{
+        await fs.stat(pathConfig, (err, stat)=>{
+            if(err) rej(false);
+            else res(true)
+        });
+    });
+}
 
+exports.readConfig = async ()=>{
+    //comprobar existencia de archivo de configuración
+    await fs.readFile(pathConfig, (err, data)=>{
+        if (err){ //El archivo de configuración no está creado
+        }else{ //El archivo de configuración ya existe
+            console.log(data);
+            
+            config = JSON.parse(data)
         }
     })
 }
+
+exports.config;
